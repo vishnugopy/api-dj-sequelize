@@ -5,6 +5,7 @@ module.exports = {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.UUID,
+        default:Sequelize.fn("uuid_generate_v4"),
       },
       url_name: {
         type: Sequelize.STRING,

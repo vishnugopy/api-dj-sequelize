@@ -6,14 +6,23 @@ module.exports = {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.UUID,
+        default:Sequelize.fn("uuid_generate_v4"),
       },
       dj_id: {
         allowNull:false,
         type: Sequelize.UUID,
+        references:{
+          model:"Djs",
+          key:"id",
+        },
       },
       musicalgenre_id: {
         allowNull:false,
         type: Sequelize.UUID,
+        references:{
+          model:"Musicalgenre",
+          key:"id",
+        },
       },
       createdAt: {
         allowNull: false,

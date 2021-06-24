@@ -9,7 +9,12 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Dj.belongsTo(models.Club)
+      this.belongsTo(models.Club);
+      this.belongsToMany(models.Dj, {
+        through: "DjMusicalgenres",
+        foreignKey: "musicalgenre_id",
+        as: "djs",
+      });
     }
   };
   Dj.init({
@@ -17,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       primaryKey: true,
       type: DataTypes.UUID,
+      defaultValue:DataTypes.UUIDV4,
     },
     url_name: {
       type: DataTypes.STRING,
